@@ -1,8 +1,8 @@
 module.exports = {
 
 	init: function(){
-		localstorage.clear();
-		localstorage.setItem('product',JSON.stringify([
+		localStorage.clear();
+		localStorage.setItem('product',JSON.stringify([
 
       {
         id: '0011001',

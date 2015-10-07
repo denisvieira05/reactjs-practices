@@ -24,6 +24,11 @@ var ProductStore = _.extend({},EventEmitter.prototype,{
 	getProduct: function(){
 		return _product;
 	},
+
+	 // Return selected Product
+  getSelected: function(){
+    return _selected;
+  },
 	
 	// Emit Change Event
 	emitChange: function(){
@@ -31,12 +36,12 @@ var ProductStore = _.extend({},EventEmitter.prototype,{
 	},
 	
 	// Add Change listener
-	addChangeListener: function()	{
+	addChangeListener: function(callback)	{
 		this.on('change',callback);
 	},
 	
 	// Remove Change Listener
-	removeChangeListener: function(){
+	removeChangeListener: function(callback){
 		this.removeListener('change',callback);
 	}
 

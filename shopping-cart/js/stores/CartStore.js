@@ -25,7 +25,7 @@ function removeItem(sku){
 	delete _products[sku];
 }
 
-var CartStore = _._extend({}, EventEmitter.prototype, {
+var CartStore = _.extend({}, EventEmitter.prototype, {
 
 	// Return Cart Items
 	getCartItems: function(){
@@ -51,12 +51,17 @@ var CartStore = _._extend({}, EventEmitter.prototype, {
 	// Return cart visibility state
 	getCartVisible: function(){
 		return _cartVisible;
-	}
+	},
 
 	// Emit Change event 
 	emitChange: function(){
 		this.emit('change');
-	}
+	},
+
+	  // Add change listener
+  addChangeListener: function(callback) {
+    this.on('change', callback);
+  },
 
 	// Add change listener
 	removeChangeListener: function(callback){

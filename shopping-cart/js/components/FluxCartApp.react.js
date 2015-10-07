@@ -34,7 +34,7 @@ var FluxCartApp = React.createClass({
 	componentWillUnmount: function(){
 		ProductStore.removeChangeListener(this._onChange);
 		CartStore.removeChangeListener(this._onChange);
-	}
+	},
 
 	// Render our child components, passing state via props
 	render: function(){
