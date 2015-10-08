@@ -5,51 +5,51 @@ var FluxProduct = require('./FluxProduct.react');
 var FluxCart = require('./FluxCart.react');
 
 // Method to retrieve state from Stores
-function getCartState(){
-	return{
-		product: ProductStore.getProduct(),
-		selectedProduct: ProductStore.getSelected(),
-		cartItems: CartStore.getCartItems(),
-		cartCount: CartStore.getCartCount(),
-		cartTotal: CartStore.getCartTotal(),
-		cartVisible: CartStore.getCartVisible()
-	};
+function getCartState() {
+  return {
+    product: ProductStore.getProduct(),
+    selectedProduct: ProductStore.getSelected(),
+    cartItems: CartStore.getCartItems(),
+    cartCount: CartStore.getCartCount(),
+    cartTotal: CartStore.getCartTotal(),
+    cartVisible: CartStore.getCartVisible()
+  };
 }
 
-// Define Main Controller View
+// Define main Controller View
 var FluxCartApp = React.createClass({
 
-	// Get Initial state from stores
-	getInitialState: function(){
-		return getCartState();
-	},
+  // Get initial state from stores
+  getInitialState: function() {
+    return getCartState();
+  },
 
-	// Add Change listeners to stores 
-	componentDidMount: function(){
-		ProductStore.addChangeListener(this._onChange);
-		CartStore.addChangeListener(this._onChange);
-	},
+  // Add change listeners to stores
+  componentDidMount: function() {
+    ProductStore.addChangeListener(this._onChange);
+    CartStore.addChangeListener(this._onChange);
+  },
 
-	// Remove change listers from stores 
-	componentWillUnmount: function(){
-		ProductStore.removeChangeListener(this._onChange);
-		CartStore.removeChangeListener(this._onChange);
-	},
+  // Remove change listeners from stores
+  componentWillUnmount: function() {
+    ProductStore.removeChangeListener(this._onChange);
+    CartStore.removeChangeListener(this._onChange);
+  },
 
-	// Render our child components, passing state via props
-	render: function(){
-		return(
-			<div className="flux-cart-app">
-				<FluxCart products={this.state.cartItems} count={this.state.cartCount} total={this.state.cartTotal} visible={this.state.cartVisible} />
-				<FluxProduct product={this.state.product} cartItems={this.state.cartItems} selected={this.state.selectedProduct} />
-			</div> 
-		);
-	},
+  // Render our child components, passing state via props
+  render: function() {
+  	return (
+      <div className="flux-cart-app">
+        <FluxCart products={this.state.cartItems} count={this.state.cartCount} total={this.state.cartTotal} visible={this.state.cartVisible} />
+        <FluxProduct product={this.state.product} cartitems={this.state.cartItems} selected={this.state.selectedProduct} />
+      </div>
+  	);
+  },
 
-	// Method to setState based upon Store Changes
-	_onChange: function() {
-		this.setState(getCartState());
-	}
+  // Method to setState based upon Store changes
+  _onChange: function() {
+    this.setState(getCartState());
+  }
 
 });
 
